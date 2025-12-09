@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>吉林省瑞联网络科技有限公司 | 顶级影视特效与视觉解决方案</title>
+    <meta name="description" content="吉林省瑞联网络科技有限公司专注于影视特效(VFX)、三维动画、后期合成及数字视觉创意。位于四平市铁西区，致力于为电影、游戏及广告提供顶尖视觉服务。">
+    <!-- Tailwind CSS (通过CDN加载) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ruilian: {
+                            dark: '#0f172a',
+                            light: '#e2e8f0',
+                            accent: '#6366f1', // Indigo
+                            glow: '#8b5cf6',   // Violet
+                            secondary: '#06b6d4' // Cyan
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans SC"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "linear-gradient(to right bottom, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.8)), url('https://images.pexels.com/photos/257904/pexels-photo-257904.jpeg?auto=compress&cs=tinysrgb&w=1920')",
+                        'tech-pattern': "linear-gradient(to right, #1e1b4b, #312e81)",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4f46e5;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4338ca;
+        }
+        
+        .text-glow {
+            text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+        }
+        
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .clip-polygon {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+    </style>
+</head>
+<body class="bg-ruilian-dark text-slate-300 font-sans antialiased overflow-x-hidden selection:bg-ruilian-accent selection:text-white">
+
+    <!-- 1. 顶部导航栏 (Sticky Navbar) -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-slate-900/90 backdrop-blur-md border-b border-white/5" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-10 h-10 bg-gradient-to-tr from-ruilian-accent to-ruilian-secondary rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                        R
+                    </div>
+                    <span class="font-bold text-2xl text-white tracking-wider">瑞联<span class="text-ruilian-secondary">科技</span></span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="text-white hover:text-ruilian-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors">首页</a>
+                        <a href="#services" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">核心业务</a>
+                        <a href="#works" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">案例展示</a>
+                        <a href="#tech" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">技术栈</a>
+                        <a href="#about" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">关于我们</a>
+                        <a href="#contact" class="bg-ruilian-accent hover:bg-indigo-600 text-white px-5 py-2 rounded-full text-sm font-medium transition-all shadow-lg shadow-indigo-500/30">立即咨询</a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu Panel -->
+        <div class="hidden md:hidden bg-slate-800" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="text-white block px-3 py-2 rounded-md text-base font-medium">首页</a>
+                <a href="#services" class="text-gray-300 block px-3 py-2 rounded-md text-base font-medium">核心业务</a>
+                <a href="#works" class="text-gray-300 block px-3 py-2 rounded-md text-base font-medium">案例展示</a>
+                <a href="#contact" class="text-ruilian-secondary block px-3 py-2 rounded-md text-base font-medium">联系我们</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. Hero Section (视觉冲击) -->
+    <section id="home" class="relative h-screen flex items-center justify-center bg-hero-pattern bg-cover bg-center bg-no-repeat bg-fixed">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/50 to-ruilian-dark"></div>
+        
+        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto">
+            <div class="mb-6 inline-block">
+                <span class="py-1 px-3 rounded-full bg-white/10 border border-white/20 text-ruilian-secondary text-sm font-semibold tracking-wide backdrop-blur-sm">
+                    FUTURE OF VFX
+                </span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-black text-white mb-6 leading-tight tracking-tight text-glow">
+                重塑<span class="text-transparent bg-clip-text bg-gradient-to-r from-ruilian-secondary to-ruilian-accent">光影边界</span><br>
+                定义视觉未来
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-300 font-light mb-10">
+                吉林省瑞联网络科技有限公司，致力于为电影、游戏及数字媒体提供好莱坞级别的视觉特效解决方案。让每一个像素都充满生命力。
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#works" class="px-8 py-4 rounded-full bg-white text-slate-900 font-bold hover:bg-gray-100 transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                    浏览作品集
+                </a>
+                <a href="#contact" class="px-8 py-4 rounded-full border border-white/30 text-white font-bold hover:bg-white/10 transition-all backdrop-blur-sm">
+                    开启合作
+                </a>
+            </div>
+        </div>
+
+        <!-- 滚动提示 -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-white/50">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- 3. 数据概览 (Counter) -->
+    <section class="py-12 bg-slate-900 border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="p-4">
+                <div class="text-4xl font-bold text-white mb-2 counter" data-target="10">0</div>
+                <div class="text-sm text-gray-400 uppercase tracking-widest">年行业经验</div>
+            </div>
+            <div class="p-4">
+                <div class="text-4xl font-bold text-ruilian-secondary mb-2 counter" data-target="500">0</div>
+                <div class="text-sm text-gray-400 uppercase tracking-widest">完成项目</div>
+            </div>
+            <div class="p-4">
+                <div class="text-4xl font-bold text-white mb-2 counter" data-target="8000">0</div>
+                <div class="text-sm text-gray-400 uppercase tracking-widest">特效镜头</div>
+            </div>
+            <div class="p-4">
+                <div class="text-4xl font-bold text-ruilian-accent mb-2 counter" data-target="100">0</div>
+                <div class="text-sm text-gray-400 uppercase tracking-widest">% 客户满意度</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 公司简介 (About) -->
+    <section id="about" class="py-20 bg-slate-900 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-ruilian-accent/10 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-16">
+            <div class="md:w-1/2 relative">
+                <div class="absolute -inset-4 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg blur-lg opacity-30"></div>
+                <img src="https://images.pexels.com/photos/3062545/pexels-photo-3062545.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Studio Environment" class="relative rounded-lg shadow-2xl border border-white/10 w-full object-cover h-[400px]">
+                <div class="absolute bottom-[-20px] right-[-20px] bg-slate-800 p-6 rounded-lg border border-white/10 shadow-xl hidden md:block">
+                    <p class="text-ruilian-secondary font-bold text-lg">吉林省重点扶持企业</p>
+                    <p class="text-xs text-gray-400">数字创意产业先行者</p>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <h2 class="text-ruilian-secondary font-bold tracking-wide uppercase mb-3">WHO WE ARE</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-white mb-6">连接现实与想象的数字桥梁</h3>
+                <p class="text-gray-400 mb-6 leading-relaxed">
+                    吉林省瑞联网络科技有限公司坐落于四平电子商务产业园，我们不仅仅是一家技术公司，更是一群对光影艺术有着极致追求的艺术家。
+                </p>
+                <p class="text-gray-400 mb-8 leading-relaxed">
+                    从早期的影视后期剪辑发展到如今的全流程视觉特效制作，我们始终保持对前沿技术的敏锐嗅觉。利用Unreal Engine、Houdini等顶尖工具，我们为客户提供从概念设计到最终成片的一站式服务。
+                </p>
+                <ul class="space-y-4 mb-8">
+                    <li class="flex items-center text-gray-300"><i class="fas fa-check-circle text-ruilian-accent mr-3"></i> 电影级特效制作流程</li>
+                    <li class="flex items-center text-gray-300"><i class="fas fa-check-circle text-ruilian-accent mr-3"></i> 7x24小时渲染农场支持</li>
+                    <li class="flex items-center text-gray-300"><i class="fas fa-check-circle text-ruilian-accent mr-3"></i> 资深视效总监全程把控</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 核心服务 (Services) - Grid布局 -->
+    <section id="services" class="py-24 bg-slate-800 clip-polygon">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">核心业务领域</h2>
+                <div class="h-1 w-20 bg-ruilian-accent mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="glass-card p-8 rounded-2xl hover:bg-white/5 transition-all duration-300 group cursor-pointer border-t-4 border-transparent hover:border-ruilian-secondary">
+                    <div class="w-16 h-16 bg-slate-700/50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-ruilian-secondary group-hover:text-white transition-colors text-ruilian-secondary text-2xl">
+                        <i class="fas fa-dragon"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">影视特效 (VFX)</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        包括流体动力学模拟、粒子特效、群集动画、爆炸与破碎效果。让不可能的画面变得真实可信。
+                    </p>
+                    <a href="#" class="text-ruilian-secondary text-sm font-semibold group-hover:translate-x-2 transition-transform inline-flex items-center">了解更多 <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="glass-card p-8 rounded-2xl hover:bg-white/5 transition-all duration-300 group cursor-pointer border-t-4 border-transparent hover:border-ruilian-accent">
+                    <div class="w-16 h-16 bg-slate-700/50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-ruilian-accent group-hover:text-white transition-colors text-ruilian-accent text-2xl">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">3D 资产与建模</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        高精度角色建模、硬表面机械建模、超写实场景搭建。利用PBR流程打造照片级质感。
+                    </p>
+                    <a href="#" class="text-ruilian-accent text-sm font-semibold group-hover:translate-x-2 transition-transform inline-flex items-center">了解更多 <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glass-card p-8 rounded-2xl hover:bg-white/5 transition-all duration-300 group cursor-pointer border-t-4 border-transparent hover:border-pink-500">
+                    <div class="w-16 h-16 bg-slate-700/50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-pink-500 group-hover:text-white transition-colors text-pink-500 text-2xl">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">合成与色调 (Compositing)</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        绿幕抠像、实拍与CG结合、画面擦除与修复。专业的达芬奇调色，赋予影片独特的情绪基调。
+                    </p>
+                    <a href="#" class="text-pink-500 text-sm font-semibold group-hover:translate-x-2 transition-transform inline-flex items-center">了解更多 <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="glass-card p-8 rounded-2xl hover:bg-white/5 transition-all duration-300 group cursor-pointer border-t-4 border-transparent hover:border-yellow-500">
+                    <div class="w-16 h-16 bg-slate-700/50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-yellow-500 group-hover:text-white transition-colors text-yellow-500 text-2xl">
+                        <i class="fas fa-vr-cardboard"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">VR/AR 交互体验</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        基于Unity和UE5引擎的虚拟现实开发，为展览、发布会提供沉浸式数字互动解决方案。
+                    </p>
+                    <a href="#" class="text-yellow-500 text-sm font-semibold group-hover:translate-x-2 transition-transform inline-flex items-center">了解更多 <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+
+                 <!-- Service 5 -->
+                 <div class="glass-card p-8 rounded-2xl hover:bg-white/5 transition-all duration-300 group cursor-pointer border-t-4 border-transparent hover:border-green-500">
+                    <div class="w-16 h-16 bg-slate-700/50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-500 group-hover:text-white transition-colors text-green-500 text-2xl">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">商业广告TVC</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        从创意脚本到成片交付，为品牌打造具有视觉冲击力的高端商业广告，提升品牌价值。
+                    </p>
+                    <a href="#" class="text-green-500 text-sm font-semibold group-hover:translate-x-2 transition-transform inline-flex items-center">了解更多 <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="glass-card p-8 rounded-2xl hover:bg-white/5 transition-all duration-300 group cursor-pointer border-t-4 border-transparent hover:border-blue-500">
+                    <div class="w-16 h-16 bg-slate-700/50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-500 group-hover:text-white transition-colors text-blue-500 text-2xl">
+                        <i class="fas fa-city"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">数字城市可视化</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        利用数字孪生技术，服务于智慧城市、地产漫游及工业仿真展示，数据可视化大屏设计。
+                    </p>
+                    <a href="#" class="text-blue-500 text-sm font-semibold group-hover:translate-x-2 transition-transform inline-flex items-center">了解更多 <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. 制作流程 (Workflow) -->
+    <section class="py-20 bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-12">
+                <h2 class="text-3xl font-bold text-white">工业化制作流程</h2>
+                <p class="text-gray-400 mt-2 md:mt-0">Standardized Workflow System</p>
+            </div>
+            
+            <div class="relative">
+                <!-- Line -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-700 -translate-y-1/2 z-0"></div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+                    <!-- Step 1 -->
+                    <div class="bg-slate-800 p-6 rounded-lg border border-gray-700 text-center hover:-translate-y-2 transition-transform">
+                        <div class="w-12 h-12 bg-ruilian-dark border border-ruilian-accent rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg shadow-[0_0_15px_rgba(99,102,241,0.5)]">01</div>
+                        <h4 class="text-lg font-bold text-white mb-2">概念设计</h4>
+                        <p class="text-xs text-gray-400">剧本拆解 / 视觉预演(Previs) / 风格设定</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="bg-slate-800 p-6 rounded-lg border border-gray-700 text-center hover:-translate-y-2 transition-transform">
+                        <div class="w-12 h-12 bg-ruilian-dark border border-ruilian-secondary rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg shadow-[0_0_15px_rgba(6,182,212,0.5)]">02</div>
+                        <h4 class="text-lg font-bold text-white mb-2">资产制作</h4>
+                        <p class="text-xs text-gray-400">模型 / 材质 / 绑定 / 场景搭建</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="bg-slate-800 p-6 rounded-lg border border-gray-700 text-center hover:-translate-y-2 transition-transform">
+                        <div class="w-12 h-12 bg-ruilian-dark border border-purple-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg shadow-[0_0_15px_rgba(168,85,247,0.5)]">03</div>
+                        <h4 class="text-lg font-bold text-white mb-2">特效与合成</h4>
+                        <p class="text-xs text-gray-400">动画 / 模拟解算 / 灯光渲染 / 最终合成</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="bg-slate-800 p-6 rounded-lg border border-gray-700 text-center hover:-translate-y-2 transition-transform">
+                        <div class="w-12 h-12 bg-ruilian-dark border border-green-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg shadow-[0_0_15px_rgba(34,197,94,0.5)]">04</div>
+                        <h4 class="text-lg font-bold text-white mb-2">交付与审核</h4>
+                        <p class="text-xs text-gray-400">Dailies / 校色 / 格式输出 / 客户验收</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. 作品案例 (Portfolio - Mixed Layout) -->
+    <section id="works" class="py-24 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-4xl font-bold text-white mb-2">精选案例</h2>
+                    <p class="text-gray-500">Featured Works</p>
+                </div>
+                <div class="hidden md:flex space-x-4">
+                    <button class="text-white border-b-2 border-ruilian-accent pb-1">全部</button>
+                    <button class="text-gray-500 hover:text-white transition-colors">电影</button>
+                    <button class="text-gray-500 hover:text-white transition-colors">游戏PV</button>
+                    <button class="text-gray-500 hover:text-white transition-colors">商业广告</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
+                <!-- Item 1: Large -->
+                <div class="md:col-span-2 md:row-span-2 group relative overflow-hidden rounded-xl cursor-pointer">
+                    <img src="https://images.pexels.com/photos/1117132/pexels-photo-1117132.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Work 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 left-0 p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <span class="text-ruilian-secondary text-xs font-bold uppercase tracking-wider mb-2 block">Feature Film</span>
+                        <h3 class="text-3xl font-bold text-white mb-2">深海救援 · 视觉特效全案</h3>
+                        <p class="text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 line-clamp-2">负责整部电影的海洋流体模拟与深海生物的生物学绑定动画，打造沉浸式深海体验。</p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="group relative overflow-hidden rounded-xl cursor-pointer">
+                    <img src="https://images.pexels.com/photos/1476321/pexels-photo-1476321.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Work 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+                    <div class="absolute bottom-4 left-4">
+                        <span class="text-ruilian-accent text-xs font-bold">GAME CINEMATIC</span>
+                        <h4 class="text-white font-bold text-lg">赛博朋克 2099 PV</h4>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="group relative overflow-hidden rounded-xl cursor-pointer">
+                    <img src="https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Work 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute bottom-4 left-4">
+                        <span class="text-pink-500 text-xs font-bold">TVC</span>
+                        <h4 class="text-white font-bold text-lg">未来汽车概念广告</h4>
+                    </div>
+                </div>
+
+                <!-- Item 4: Wide -->
+                <div class="md:col-span-2 group relative overflow-hidden rounded-xl cursor-pointer">
+                    <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Work 4" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute bottom-0 left-0 p-6 w-full bg-gradient-to-t from-black to-transparent">
+                        <span class="text-yellow-500 text-xs font-bold">ARCH VIZ</span>
+                        <h4 class="text-white font-bold text-xl">智慧城市数据大屏可视化</h4>
+                    </div>
+                </div>
+                 <!-- Item 5 -->
+                 <div class="group relative overflow-hidden rounded-xl cursor-pointer">
+                    <img src="https://images.pexels.com/photos/2085831/pexels-photo-2085831.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Work 5" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute bottom-4 left-4">
+                        <span class="text-green-500 text-xs font-bold">ANIMATION</span>
+                        <h4 class="text-white font-bold text-lg">奇幻森林动画短片</h4>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#" class="inline-block px-10 py-3 border border-gray-600 text-gray-300 rounded-full hover:bg-white hover:text-black transition-all font-semibold tracking-wide">查看更多案例</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. 技术栈 (Tech Stack) -->
+    <section id="tech" class="py-16 bg-slate-900 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <h3 class="text-center text-gray-400 mb-10 text-sm tracking-widest uppercase">Powered By World Class Technologies</h3>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+                <!-- 使用文字代替Logo图片以确保显示，实际项目中可替换为SVG -->
+                <div class="text-2xl font-bold text-gray-300 flex items-center gap-2"><i class="fas fa-cube"></i> Unreal Engine 5</div>
+                <div class="text-2xl font-bold text-gray-300 flex items-center gap-2"><i class="fas fa-magic"></i> Houdini</div>
+                <div class="text-2xl font-bold text-gray-300 flex items-center gap-2"><i class="fas fa-video"></i> Nuke</div>
+                <div class="text-2xl font-bold text-gray-300 flex items-center gap-2"><i class="fas fa-shapes"></i> Maya</div>
+                <div class="text-2xl font-bold text-gray-300 flex items-center gap-2"><i class="fas fa-paint-brush"></i> Substance</div>
+                <div class="text-2xl font-bold text-gray-300 flex items-center gap-2"><i class="fas fa-film"></i> DaVinci Resolve</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. 为什么选择我们 (Features) -->
+    <section class="py-20 bg-gradient-to-br from-slate-900 to-indigo-900/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-6">我们的优势</h2>
+                    <div class="space-y-6">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <div class="flex items-center justify-center h-12 w-12 rounded-md bg-ruilian-accent text-white">
+                                    <i class="fas fa-rocket text-xl"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg leading-6 font-medium text-white">高效交付体系</h3>
+                                <p class="mt-2 text-base text-gray-400">
+                                    拥有自主研发的资产管理系统，大幅缩短渲染等待时间，确保项目按时高质交付。
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <div class="flex items-center justify-center h-12 w-12 rounded-md bg-ruilian-secondary text-white">
+                                    <i class="fas fa-users text-xl"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg leading-6 font-medium text-white">国际化团队视野</h3>
+                                <p class="mt-2 text-base text-gray-400">
+                                    核心成员曾在国内外知名特效公司任职，不仅懂技术，更懂艺术与镜头语言。
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <div class="flex items-center justify-center h-12 w-12 rounded-md bg-pink-600 text-white">
+                                    <i class="fas fa-shield-alt text-xl"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg leading-6 font-medium text-white">数据安全保障</h3>
+                                <p class="mt-2 text-base text-gray-400">
+                                    严格的TPN安保标准，独立的内网制作环境，确保客户的未上映素材绝对安全。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team meeting" class="rounded-xl shadow-2xl border border-white/10 rotate-3 hover:rotate-0 transition-all duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. 团队介绍 (Team) -->
+    <section class="py-20 bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-white mb-12">核心主创</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Member 1 -->
+                <div class="bg-slate-800 rounded-lg overflow-hidden group">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Team Member" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 grayscale group-hover:grayscale-0">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white">张浩然</h3>
+                        <p class="text-ruilian-secondary text-sm mb-3">VFX Supervisor / 视效总监</p>
+                        <p class="text-gray-400 text-xs">10年从业经验，曾参与多部院线电影特效制作。</p>
+                    </div>
+                </div>
+                <!-- Member 2 -->
+                <div class="bg-slate-800 rounded-lg overflow-hidden group">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Team Member" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 grayscale group-hover:grayscale-0">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white">李梦云</h3>
+                        <p class="text-ruilian-secondary text-sm mb-3">Art Director / 美术指导</p>
+                        <p class="text-gray-400 text-xs">擅长概念设计与色彩氛围把控，独特的审美视角。</p>
+                    </div>
+                </div>
+                <!-- Member 3 -->
+                <div class="bg-slate-800 rounded-lg overflow-hidden group">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Team Member" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 grayscale group-hover:grayscale-0">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white">Wang David</h3>
+                        <p class="text-ruilian-secondary text-sm mb-3">Lead TD / 技术总监</p>
+                        <p class="text-gray-400 text-xs">精通Python与Houdini流程开发，解决复杂技术难题。</p>
+                    </div>
+                </div>
+                 <!-- Member 4 -->
+                 <div class="bg-slate-800 rounded-lg overflow-hidden group">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Team Member" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 grayscale group-hover:grayscale-0">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white">赵子轩</h3>
+                        <p class="text-ruilian-secondary text-sm mb-3">Compositing Lead / 合成组长</p>
+                        <p class="text-gray-400 text-xs">对光影有极致追求，赋予画面最终的灵魂。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. 客户评价 (Testimonials) -->
+    <section class="py-20 bg-slate-800 relative">
+        <div class="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-ruilian-accent m-4 opacity-50"></div>
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <i class="fas fa-quote-left text-4xl text-gray-600 mb-6"></i>
+            <h3 class="text-2xl md:text-3xl font-light italic text-white mb-8 leading-relaxed">
+                "瑞联科技是我们合作过最专业的特效团队之一。他们不仅按时交付了高质量的镜头，更在创意阶段为剧本提供了极具价值的视觉建议。他们的技术实力完全超出了我们的预期。"
+            </h3>
+            <div class="flex items-center justify-center space-x-4">
+                <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=100" class="w-12 h-12 rounded-full border-2 border-ruilian-accent" alt="Client">
+                <div class="text-left">
+                    <p class="text-white font-bold">陈建邦</p>
+                    <p class="text-gray-400 text-sm">知名独立电影导演</p>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-ruilian-secondary m-4 opacity-50"></div>
+    </section>
+
+    <!-- 12. 人才招聘 (Careers CTA) -->
+    <section class="py-16 bg-gradient-to-r from-ruilian-accent to-purple-800">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <div class="mb-6 md:mb-0">
+                <h2 class="text-3xl font-bold text-white mb-2">加入我们，共创视觉奇迹</h2>
+                <p class="text-indigo-200">正在寻找：Houdini特效师、UE5地编、合成师、模型师。</p>
+            </div>
+            <a href="#contact" class="px-8 py-3 bg-white text-indigo-700 font-bold rounded-full hover:bg-gray-100 transition-shadow shadow-xl">
+                查看在招职位
+            </a>
+        </div>
+    </section>
+
+    <!-- 13. 常见问题 (FAQ) -->
+    <section class="py-20 bg-slate-900">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-white text-center mb-12">常见问题</h2>
+            <div class="space-y-4">
+                <div class="bg-slate-800 rounded-lg p-6 cursor-pointer hover:bg-slate-700 transition-colors">
+                    <h4 class="text-white font-bold mb-2 flex justify-between">制作一个特效镜头通常需要多长时间？ <i class="fas fa-plus text-ruilian-secondary"></i></h4>
+                    <p class="text-gray-400 text-sm">这取决于镜头的复杂程度。简单的擦除或合成可能只需几天，而涉及复杂流体模拟或生物角色的镜头可能需要数周甚至更久。我们在项目初期会提供详细的时间表。</p>
+                </div>
+                <div class="bg-slate-800 rounded-lg p-6 cursor-pointer hover:bg-slate-700 transition-colors">
+                    <h4 class="text-white font-bold mb-2 flex justify-between">你们是否接受异地/远程合作？ <i class="fas fa-plus text-ruilian-secondary"></i></h4>
+                    <p class="text-gray-400 text-sm">是的，我们拥有完善的远程协作流程和高速传输通道，已成功服务过北京、上海及海外的多个客户。</p>
+                </div>
+                <div class="bg-slate-800 rounded-lg p-6 cursor-pointer hover:bg-slate-700 transition-colors">
+                    <h4 class="text-white font-bold mb-2 flex justify-between">如何保证项目数据的安全性？ <i class="fas fa-plus text-ruilian-secondary"></i></h4>
+                    <p class="text-gray-400 text-sm">我们签署严格的NDA保密协议，并在内网隔离环境中进行制作，杜绝任何未授权的素材外泄。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 14. 行业资讯 (News/Blog - Simplified) -->
+    <section class="py-20 bg-slate-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center mb-10">
+                <h2 class="text-3xl font-bold text-white">公司动态</h2>
+                <a href="#" class="text-ruilian-accent hover:text-white transition-colors text-sm">阅读更多动态 <i class="fas fa-chevron-right"></i></a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <article class="bg-slate-900 rounded-lg overflow-hidden group">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.pexels.com/photos/270404/pexels-photo-270404.jpeg?auto=compress&cs=tinysrgb&w=500" alt="News 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs text-gray-500 mb-2 block">2023-10-24</span>
+                        <h3 class="text-white font-bold mb-3 hover:text-ruilian-secondary transition-colors cursor-pointer">瑞联科技引入全新动作捕捉系统</h3>
+                        <p class="text-gray-400 text-sm line-clamp-3">为了提升角色动画的制作效率与真实感，公司正式引进好莱坞级别的光学动捕设备...</p>
+                    </div>
+                </article>
+                <article class="bg-slate-900 rounded-lg overflow-hidden group">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=500" alt="News 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs text-gray-500 mb-2 block">2023-09-15</span>
+                        <h3 class="text-white font-bold mb-3 hover:text-ruilian-secondary transition-colors cursor-pointer">助力四平数字经济，打造本地VFX基地</h3>
+                        <p class="text-gray-400 text-sm line-clamp-3">吉林省瑞联网络科技有限公司积极响应号召，致力于在四平电子商务产业园打造...</p>
+                    </div>
+                </article>
+                <article class="bg-slate-900 rounded-lg overflow-hidden group">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=500" alt="News 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs text-gray-500 mb-2 block">2023-08-01</span>
+                        <h3 class="text-white font-bold mb-3 hover:text-ruilian-secondary transition-colors cursor-pointer">虚幻引擎5在影视流程中的应用讲座</h3>
+                        <p class="text-gray-400 text-sm line-clamp-3">我司技术总监受邀分享关于实时渲染技术如何改变传统影视后期制作流程...</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 15. 联系我们 (Contact & Map) -->
+    <section id="contact" class="py-24 bg-slate-900 relative">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <div>
+                <h2 class="text-4xl font-bold text-white mb-6">开启项目咨询</h2>
+                <p class="text-gray-400 mb-10">
+                    无论您有一个具体的项目需求，还是仅仅想探讨创意的可能性，我们都随时欢迎您的联络。填写表单，我们将在24小时内回复。
+                </p>
+                
+                <div class="space-y-8">
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center text-ruilian-secondary shrink-0">
+                            <i class="fas fa-map-marker-alt text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-white font-bold text-lg">公司地址</h4>
+                            <p class="text-gray-400">吉林省四平市铁西区海丰大路458号<br>四平电子商务产业园3号楼243</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center text-ruilian-secondary shrink-0">
+                            <i class="fas fa-envelope text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-white font-bold text-lg">电子邮箱</h4>
+                            <p class="text-gray-400">dev@jilinruilian.asia</p>
+                            <p class="text-gray-500 text-xs mt-1">商务合作 / 简历投递</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center text-ruilian-secondary shrink-0">
+                            <i class="fas fa-phone-alt text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-white font-bold text-lg">联系电话</h4>
+                            <p class="text-gray-400 font-mono text-xl">17865352908</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="bg-slate-800 p-8 rounded-2xl border border-gray-700 shadow-2xl">
+                <form onsubmit="event.preventDefault(); alert('感谢您的留言，我们会尽快联系您！');">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-gray-400 text-sm mb-2">姓名</label>
+                            <input type="text" class="w-full bg-slate-900 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-ruilian-accent transition-colors" placeholder="您的姓名">
+                        </div>
+                        <div>
+                            <label class="block text-gray-400 text-sm mb-2">电话</label>
+                            <input type="tel" class="w-full bg-slate-900 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-ruilian-accent transition-colors" placeholder="联系电话">
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-400 text-sm mb-2">邮箱</label>
+                        <input type="email" class="w-full bg-slate-900 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-ruilian-accent transition-colors" placeholder="example@email.com">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-400 text-sm mb-2">感兴趣的服务</label>
+                        <select class="w-full bg-slate-900 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-ruilian-accent transition-colors">
+                            <option>影视特效制作</option>
+                            <option>3D建模与资产</option>
+                            <option>后期合成/调色</option>
+                            <option>商业广告TVC</option>
+                            <option>其他合作</option>
+                        </select>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-400 text-sm mb-2">项目描述</label>
+                        <textarea class="w-full bg-slate-900 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-ruilian-accent transition-colors h-32" placeholder="请简述您的项目需求..."></textarea>
+                    </div>
+                    <button class="w-full bg-gradient-to-r from-ruilian-accent to-ruilian-secondary text-white font-bold py-4 rounded-lg hover:opacity-90 transition-opacity shadow-lg">
+                        发送消息
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 16. 地图占位 (Map) -->
+    <div class="h-80 w-full bg-slate-800 relative group overflow-hidden">
+        <!-- 模拟地图视觉 -->
+        <img src="https://images.pexels.com/photos/2506260/pexels-photo-2506260.jpeg?auto=compress&cs=tinysrgb&w=1920" class="w-full h-full object-cover opacity-30 group-hover:opacity-40 transition-opacity filter grayscale invert" alt="Map Location">
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="bg-ruilian-dark/90 p-4 rounded-lg backdrop-blur text-center border border-ruilian-accent/50">
+                <p class="text-white font-bold">吉林省瑞联网络科技有限公司</p>
+                <p class="text-gray-400 text-xs mt-1">四平电子商务产业园</p>
+                <a href="#" class="mt-2 inline-block text-ruilian-secondary text-xs hover:underline">点击查看导航</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 17. 底部 (Footer) -->
+    <footer class="bg-black pt-16 pb-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div class="col-span-1 md:col-span-1">
+                <div class="flex items-center gap-2 mb-6">
+                    <div class="w-8 h-8 bg-gradient-to-tr from-ruilian-accent to-ruilian-secondary rounded flex items-center justify-center text-white font-bold">R</div>
+                    <span class="text-xl font-bold text-white">瑞联科技</span>
+                </div>
+                <p class="text-gray-500 text-sm leading-relaxed">
+                    专注于为全球客户提供顶尖的数字视觉解决方案。我们将技术与艺术完美融合，创造出令人惊叹的视觉奇观。
+                </p>
+                <div class="flex space-x-4 mt-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-weixin text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-weibo text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-linkedin text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-artstation text-xl"></i></a>
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="text-white font-bold mb-6">服务项目</h4>
+                <ul class="space-y-3 text-sm text-gray-500">
+                    <li><a href="#" class="hover:text-ruilian-secondary transition-colors">电影特效 VFX</a></li>
+                    <li><a href="#" class="hover:text-ruilian-secondary transition-colors">角色与场景建模</a></li>
+                    <li><a href="#" class="hover:text-ruilian-secondary transition-colors">后期合成与调色</a></li>
+                    <li><a href="#" class="hover:text-ruilian-secondary transition-colors">VR/AR 开发</a></li>
+                    <li><a href="#" class="hover:text-ruilian-secondary transition-colors">数据可视化</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="text-white font-bold mb-6">快速链接</h4>
+                <ul class="space-y-3 text-sm text-gray-500">
+                    <li><a href="#about" class="hover:text-ruilian-secondary transition-colors">关于我们</a></li>
+                    <li><a href="#works" class="hover:text-ruilian-secondary transition-colors">作品案例</a></li>
+                    <li><a href="#team" class="hover:text-ruilian-secondary transition-colors">团队介绍</a></li>
+                    <li><a href="#" class="hover:text-ruilian-secondary transition-colors">招贤纳士</a></li>
+                    <li><a href="#contact" class="hover:text-ruilian-secondary transition-colors">联系我们</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="text-white font-bold mb-6">订阅动态</h4>
+                <p class="text-gray-500 text-sm mb-4">订阅我们的邮件列表，获取最新的行业资讯与公司动态。</p>
+                <div class="flex">
+                    <input type="email" placeholder="您的邮箱" class="bg-slate-900 border border-gray-700 text-white px-4 py-2 rounded-l-md focus:outline-none w-full text-sm">
+                    <button class="bg-ruilian-accent px-4 py-2 rounded-r-md text-white hover:bg-indigo-600 transition-colors"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 pt-8 border-t border-gray-900 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-gray-600 text-xs">
+            <p>&copy; 2023 吉林省瑞联网络科技有限公司 版权所有. All Rights Reserved.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="#" class="hover:text-gray-400">隐私政策</a>
+                <a href="#" class="hover:text-gray-400">服务条款</a>
+                <a href="#" class="hover:text-gray-400">网站地图</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS Scripts -->
+    <script>
+        // 1. Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // 2. Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg');
+                navbar.classList.replace('bg-slate-900/90', 'bg-slate-900/95');
+            } else {
+                navbar.classList.remove('shadow-lg');
+                navbar.classList.replace('bg-slate-900/95', 'bg-slate-900/90');
+            }
+        });
+
+        // 3. Simple Number Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 20);
+                    } else {
+                        counter.innerText = target + (target > 100 ? '+' : '');
+                    }
+                };
+                updateCount();
+            });
+        };
+
+        // Trigger animation when stats section is in view
+        let counted = false;
+        const observer = new IntersectionObserver((entries) => {
+            if(entries[0].isIntersecting && !counted) {
+                animateCounters();
+                counted = true;
+            }
+        }, { threshold: 0.5 });
+        
+        const statsSection = document.querySelector('.counter').closest('section');
+        if(statsSection) observer.observe(statsSection);
+
+    </script>
+</body>
+</html>
